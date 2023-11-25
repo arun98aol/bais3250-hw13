@@ -18,11 +18,14 @@ logging.basicConfig(
 
 logging.info("Loading variables from Azure Key Vault")
 
-# AZURE_KEY_VAULT_URL = os.environ["AZURE_KEY_VAULT_URL"]
-AZURE_KEY_VAULT_URL = "https://aganapathy.vault.azure.net/" #os.environ.get("AZURE_KEY_VAULT_URL")
+#  = os.environ["AZURE_KEY_VAULT_URL"]
+# AZURE_KEY_VAULT_URL = #os.environ.get("AZURE_KEY_VAULT_URL")
+
+keyVaultName = os.environ["AZURE_KEY_VAULT_URL"]
+KVUri = f"https://{keyVaultName}.vault.azure.net"
 
 credential = DefaultAzureCredential()
-client = SecretClient(vault_url=AZURE_KEY_VAULT_URL, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 
 _dbhostname = client.get_secret("HW13-DBHOSTNAME")
 _dbusername = client.get_secret("HW13-DBUSERNAME")
