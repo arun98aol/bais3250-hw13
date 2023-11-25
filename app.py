@@ -37,7 +37,9 @@ conn = pymysql.connect(
     db=_dbname.value,
     ssl={"ca": "./DigiCertGlobalRootCA.crt.pem"},
     cursorclass=pymysql.cursors.DictCursor,
+    port=3306
 )
+
 
 logging.info("Starting Flask app")
 
